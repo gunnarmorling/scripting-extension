@@ -40,13 +40,10 @@ import javax.script.ScriptEngineManager;
 public class ScriptingExtension implements Extension {
 
 	void afterBeanDiscovery(@Observes AfterBeanDiscovery abd, BeanManager bm) {
-		System.out.println("After Bean Discovery");
-		// use this to read annotations of the class
 
 		AnnotatedType<ScriptEngineManager> at = bm
 				.createAnnotatedType(ScriptEngineManager.class);
 
-		// use this to instantiate the class and inject dependencies
 
 		final InjectionTarget<ScriptEngineManager> it = bm
 				.createInjectionTarget(at);
@@ -57,14 +54,12 @@ public class ScriptingExtension implements Extension {
 			public Class<?> getBeanClass() {
 
 				return ScriptEngineManager.class;
-
 			}
 
 			@Override
 			public Set<InjectionPoint> getInjectionPoints() {
 
 				return it.getInjectionPoints();
-
 			}
 
 			@Override
@@ -80,14 +75,10 @@ public class ScriptingExtension implements Extension {
 
 				Set<Annotation> qualifiers = new HashSet<Annotation>();
 
-				qualifiers.add(new AnnotationLiteral<Default>() {
-				});
-
-				qualifiers.add(new AnnotationLiteral<Any>() {
-				});
+				qualifiers.add(new AnnotationLiteral<Default>() {});
+				qualifiers.add(new AnnotationLiteral<Any>() {});
 
 				return qualifiers;
-
 			}
 
 			@Override
@@ -101,7 +92,6 @@ public class ScriptingExtension implements Extension {
 			public Set<Class<? extends Annotation>> getStereotypes() {
 
 				return Collections.emptySet();
-
 			}
 
 			@Override
@@ -110,7 +100,6 @@ public class ScriptingExtension implements Extension {
 				Set<Type> types = new HashSet<Type>();
 
 				types.add(ScriptEngineManager.class);
-
 				types.add(Object.class);
 
 				return types;
@@ -121,41 +110,26 @@ public class ScriptingExtension implements Extension {
 			public boolean isAlternative() {
 
 				return false;
-
 			}
 
 			@Override
 			public boolean isNullable() {
 
 				return false;
-
 			}
 
 			@Override
 			public ScriptEngineManager create(
 					CreationalContext<ScriptEngineManager> ctx) {
 
-				ScriptEngineManager instance = it.produce(ctx);
-
-				it.inject(instance, ctx);
-
-				it.postConstruct(instance);
-
-				return instance;
-
+				return it.produce(ctx);
 			}
 
 			@Override
-			public void destroy(ScriptEngineManager instance,
-
-			CreationalContext<ScriptEngineManager> ctx) {
-
-				it.preDestroy(instance);
+			public void destroy(ScriptEngineManager instance, CreationalContext<ScriptEngineManager> ctx) {
 
 				it.dispose(instance);
-
 				ctx.release();
-
 			}
 
 		});
