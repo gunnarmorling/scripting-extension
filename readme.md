@@ -14,7 +14,9 @@ for arbitrary script evaluations:
 	@RequestScoped
 	public class MyBean {
 
-		@Inject @Language("javascript") private ScriptEngine jsEngine;
+		@Inject 
+		@Language("javascript") 
+		private ScriptEngine jsEngine;
 
 		// ...
 
