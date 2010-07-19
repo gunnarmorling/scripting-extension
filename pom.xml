@@ -1,9 +1,25 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
+	
 	<groupId>de.gmorling.cdi.extensions</groupId>
 	<artifactId>scripting-extension</artifactId>
 	<packaging>jar</packaging>
 	<version>0.1-SNAPSHOT</version>
+	
+	<name>Scripting Extension</name>
+	<description>
+		A CDI portable extension allowing to retrieve JSR 223 scripting engines via dependency injection.
+	</description>
+	<developers>
+		<developer>
+			<name>Gunnar Morling</name>
+		</developer>
+	</developers>
+	<inceptionYear>2010</inceptionYear>
 	
 	<build>
 		<plugins>
