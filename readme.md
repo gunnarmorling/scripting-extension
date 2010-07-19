@@ -20,7 +20,7 @@ for arbitrary script evaluations:
 
 		public void foo() throws ScriptException {
 
-			assert 42.0d == (Double)engineInjectedByName.eval("2 * 21");
+			assert 42.0d == (Double)jsEngine.eval("2 * 21");
 			// ...
 		}
 
